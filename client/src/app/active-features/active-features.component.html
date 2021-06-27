@@ -1,0 +1,42 @@
+<div class="p-grid p-jc-center">
+    <div class="p-col-3 p-text-center">
+        <p-card>
+            Select customer
+            <br>
+            <p-dropdown [options]="availableCustomers"
+                        [styleClass]="'p-mt-3'"
+                        [(ngModel)]="selectedCustomerId"
+                        optionLabel="name"
+                        optionValue="code"></p-dropdown>
+        </p-card>
+    </div>
+    <div class="p-col-3 p-text-center">
+        <p-card>
+            Select features
+            <br>
+            <p-multiSelect [options]="availableFeatureToggles"
+                           [styleClass]="'p-mt-3'"
+                           [(ngModel)]="selectedFeatures"
+                           optionLabel="name"
+                           optionValue="code"></p-multiSelect>
+        </p-card>
+    </div>
+</div>
+<div class="p-grid p-jc-center">
+    <div class="p-col-4 p-text-center">
+        <p-card>
+            <p-button [disabled]="selectedFeatures.length < 1" (onClick)="getFeaturesForCustomer()">Find</p-button>
+            <br>
+            <div *ngIf="selectedFeatures.length < 1" class="p-col p-text-center">
+                <p-message severity="error" text="Need to select at least 1 feature"></p-message>
+            </div>
+            <br>
+            <br>
+            Result:
+            <br>
+            <br>
+            {{ customerFeatureResult | json }}
+        </p-card>
+    </div>
+</div>
+

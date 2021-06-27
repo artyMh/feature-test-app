@@ -1,0 +1,14 @@
+<div class="p-grid p-flex-column p-jc-center">
+    <div class="p-col p-text-center">
+        <h1>Feature toggle list:</h1>
+    </div>
+    <div class="p-col">
+        <div class="p-grid p-jc-center">
+            <div class="p-col-4" *ngIf="customers && featureToggles && featureToggles.length > 0">
+                <div *ngFor="let featureToggle of featureToggles" class="p-mt-2">
+                    <feature-toggle-card [customers]="customers" [featureToggle]="featureToggle" (featureToggleActionProceed)="featureToggleActionProceed.emit()"></feature-toggle-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

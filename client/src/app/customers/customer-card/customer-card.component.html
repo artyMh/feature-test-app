@@ -1,0 +1,13 @@
+<p-card [header]="customer.firstName" [subheader]="customer.lastName">
+    <p-button type="button" label="Edit" icon="pi pi-user-edit" iconPos="left" [styleClass]="'p-button-raised p-button-secondary'" (onClick)="showEditDialog()"></p-button>
+    <p-button type="button" label="Delete" icon="pi pi-trash" iconPos="left" [styleClass]="'p-button-raised p-button-danger p-ml-2'" (onClick)="onDeleteCustomer()"></p-button>
+</p-card>
+<p-dialog header="Edit customer"
+          [(visible)]="displayEditDialog"
+          [modal]="true"
+          [draggable]="false"
+          [resizable]="false"
+          [closeOnEscape]="true"
+          [closable]="true">
+    <customer-form *ngIf="displayEditDialog" [customer]="customer" (submitCustomer)="onEditCustomer($event)"></customer-form>
+</p-dialog>

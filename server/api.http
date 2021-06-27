@@ -1,0 +1,11 @@
+GET http://localhost:3000/api/customer
+# DELETE http://localhost:3000/api/customer/60d7148194cac6086125a965
+Content-Type: application/json
+Accept: application/json
+
+# {
+#     "_id": "60d638dda2ee490b7874ac5c",
+#     "firstName": "Opaaa",
+#     "lastName": "Hobaaa",
+#     "__v": 0
+# }

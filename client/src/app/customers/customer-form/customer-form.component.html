@@ -1,0 +1,22 @@
+
+<div class="p-formgroup-inline p-mt-1">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="p-field p-d-flex p-flex-column">
+            <span class="p-input-icon-left">
+                <i class="pi pi-user"></i>
+                <input type="text" pInputText placeholder="Firstname" formControlName="firstName">
+            </span>
+            <small *ngIf="!customerForm.controls['firstName'].valid && customerForm.controls['firstName'].dirty" id="username-help" class="p-error">First name is required.</small>
+        </div>
+        <div class="p-field p-d-flex p-flex-column">
+            <span class="p-input-icon-left">
+                <i class="pi pi-user"></i>
+                <input type="text" pInputText placeholder="Lastname" formControlName="lastName">
+            </span>
+            <small *ngIf="!customerForm.controls['lastName'].valid && customerForm.controls['lastName'].dirty" id="lastname-help" class="p-error">Lastname is required.</small>
+        </div>
+        <div class="p-field p-text-center">
+            <p-button type="submit" label="Submit" icon="pi pi-check" iconPos="right" [disabled]="!customerForm.valid"></p-button>
+        </div>
+    </form>
+</div>

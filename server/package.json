@@ -1,0 +1,39 @@
+{
+  "name": "swisscom-backend-test-excersise",
+  "version": "0.0.1",
+  "description": "Backend for feature toggling",
+  "private": true,
+  "author": "Artjoms Mihailovs",
+  "email": "art.mihailovs@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc -r tsconfig-paths/register && node dist/index.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "build": "tsc",
+    "lint": "eslint --ext ts,tsx ./src"
+  },
+  "engines": {
+    "node": "14.17.1",
+    "npm": "6.14.13"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "mongoose": "5.12.4"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.12",
+    "@types/mongoose": "5.11.97",
+    "@types/node": "15.12.2",
+    "@typescript-eslint/eslint-plugin": "4.27.0",
+    "@typescript-eslint/parser": "4.27.0",
+    "eslint": "7.28.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "prettier": "2.3.1",
+    "ts-node-dev": "1.1.6",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "4.3.2"
+  }
+}

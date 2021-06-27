@@ -1,0 +1,49 @@
+
+<div class="p-formgroup p-mt-1">
+    <form [formGroup]="featureToggleForm" (ngSubmit)="onSubmit()" class="form p-formgrid">
+        <div class="p-field p-fluid">
+            <label for="displayName" class="p-mb-2">Display name</label>
+            <span class="p-input-icon-left">
+                <i class="pi pi-book"></i>
+                <input type="text" pInputText formControlName="displayName">
+            </span>
+        </div>
+        <div class="p-field p-fluid">
+            <label for="technicalName" class="p-mb-2">Technical name *</label>
+            <span class="p-input-icon-left">
+                <i class="pi pi-briefcase"></i>
+                <input type="text" pInputText formControlName="technicalName">
+            </span>
+            <small *ngIf="!featureToggleForm.controls['technicalName'].valid && featureToggleForm.controls['technicalName'].dirty" id="technicalname-help" class="p-error">Technical name is required.</small>
+        </div>
+        <div class="p-field p-fluid">
+            <label for="expiresOn" class="p-mb-2">Expires on</label>
+            <p-calendar formControlName="expiresOn" [showIcon]="true" dateFormat="dd.mm.yy"></p-calendar>
+        </div>
+        <div class="p-field p-fluid">
+            <label for="description" class="p-mb-2">Description</label>
+            <span class="p-input-icon-left">
+                <i class="pi pi-info-circle"></i>
+                <input type="text" pInputText formControlName="description">
+            </span>
+        </div>
+        <div class="p-field p-fluid">
+            <label for="customerIds" class="p-mb-2">Customers *</label>
+            <span class="p-input-icon-left">
+                <i class="pi pi-info-circle"></i>
+                <p-multiSelect [options]="availableCustomersIds"
+                               formControlName="customerIds"
+                               optionLabel="customerName"
+                               optionValue="code"></p-multiSelect>
+            </span>
+            <small *ngIf="!featureToggleForm.controls['customerIds'].valid && featureToggleForm.controls['customerIds'].dirty" id="customerids-help" class="p-error">Customers is required.</small>
+        </div>
+        <div class="p-field-checkbox">
+            <p-checkbox inputId="inverted" formControlName="inverted" [binary]="true"></p-checkbox>
+            <label for="inverted">Inverted</label>
+        </div>
+        <div class="p-field p-text-center">
+            <p-button type="submit" label="Submit" icon="pi pi-check" iconPos="right" [disabled]="!featureToggleForm.valid"></p-button>
+        </div>
+    </form>
+</div>

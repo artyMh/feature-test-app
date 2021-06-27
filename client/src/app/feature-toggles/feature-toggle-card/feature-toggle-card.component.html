@@ -1,0 +1,31 @@
+<p-card [header]="featureToggle.technicalName">
+    <div class="p-grid p-mb-2">
+        <div class="p-col-6">Display name:</div>
+        <div class="p-col-6">{{ featureToggle.displayName }}</div>
+        <div class="p-col-6">Technical name:</div>
+        <div class="p-col-6">{{ featureToggle.technicalName }}</div>
+        <div class="p-col-6">Expires on:</div>
+        <div class="p-col-6">{{ featureToggle.expiresOn | date :'dd.MM.yyyy' }}</div>
+        <div class="p-col-6">Description:</div>
+        <div class="p-col-6">{{ featureToggle.description }}</div>
+        <div class="p-col-6">Inverted:</div>
+        <div class="p-col-6">{{ featureToggle.inverted ? 'Yes' : 'No' }}</div>
+        <div class="p-col-6">Customers:</div>
+        <div class="p-col-6">{{ featureCustomersList }}</div>
+    </div>
+    <p-button type="button" label="Edit" icon="pi pi-user-edit" iconPos="left" [styleClass]="'p-button-raised p-button-secondary'" (onClick)="showEditDialog()"></p-button>
+    <p-button type="button" label="Delete" icon="pi pi-trash" iconPos="left" [styleClass]="'p-button-raised p-button-danger p-ml-2'" (onClick)="onDeleteFeatureToggle()"></p-button>
+</p-card>
+<p-dialog header="Edit feature toggle"
+          [(visible)]="displayEditDialog"
+          [modal]="true"
+          [draggable]="false"
+          [resizable]="false"
+          [closeOnEscape]="true"
+          [closable]="true">
+    <feature-toggle-form *ngIf="displayEditDialog"
+                         [ngClass]="'p-text-left'"
+                         [customers]="customers"
+                         [featureToggle]="featureToggle"
+                         (submitFeatureToggle)="onEditFeatureToggle($event)"></feature-toggle-form>
+</p-dialog>

@@ -1,0 +1,25 @@
+<div class="p-grid p-flex-column">
+    <div class="p-col p-text-center">
+        <p-button label="Add new feature toggle"
+                  icon="pi pi-plus"
+                  [styleClass]="'p-button-secondary'"
+                  [disabled]="customers.length < 1"
+                  (onClick)="showAddDialog()"></p-button>
+    </div>
+    <div *ngIf="customersLoaded && customers.length < 1" class="p-col p-text-center">
+        <p-message severity="error" text="Need to create at least 1 customer"></p-message>
+    </div>
+    <div class="p-col p-text-center">
+        <feature-toggle-list [customers]="customers" [featureToggles]="featureToggles" (featureToggleActionProceed)="refreshFeatureToggles()"></feature-toggle-list>
+    </div>
+</div>
+<p-dialog header="Add new feature toggle"
+          [(visible)]="displayAddDialog"
+          [contentStyle]="{'overflow': 'visible'}"
+          [modal]="true"
+          [draggable]="false"
+          [resizable]="false"
+          [closeOnEscape]="true"
+          [closable]="true">
+    <feature-toggle-form *ngIf="displayAddDialog" [customers]="customers" (submitFeatureToggle)="onSubmitFeatureToggle($event)"></feature-toggle-form>
+</p-dialog>

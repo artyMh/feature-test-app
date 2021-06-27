@@ -1,0 +1,14 @@
+<div class="p-grid p-flex-column p-jc-center">
+    <div class="p-col p-text-center">
+        <h1>Customers list:</h1>
+    </div>
+    <div class="p-col">
+        <div class="p-grid p-jc-center">
+            <div class="p-col-2" *ngIf="customers && customers.length > 0">
+                <div *ngFor="let customer of customers" class="p-mt-2">
+                    <customer-card [customer]="customer" (customerActionProceed)="customerActionProceed.emit()"></customer-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

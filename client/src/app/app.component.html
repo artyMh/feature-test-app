@@ -1,0 +1,18 @@
+
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<div class="p-grid p-flex-column">
+    <div class="p-col">
+        <p-toolbar>
+            <div class="nav-menu">
+                <p-button label="Home" styleClass="p-button-link" [routerLink]="['/']"></p-button>
+                <p-button label="Customers" styleClass="p-button-link" [routerLink]="['/customers']"></p-button>
+                <p-button label="Toggle features" styleClass="p-button-link" [routerLink]="['/feature-toggles']"></p-button>
+                <p-button label="Active features" styleClass="p-button-link" [routerLink]="['/active-features']"></p-button>
+            </div>
+        </p-toolbar>
+    </div>
+    <div class="p-col">
+        <router-outlet></router-outlet>
+    </div>
+</div>
