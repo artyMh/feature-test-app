@@ -1,6 +1,11 @@
 {
   "name": "feature-toggle-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Frontend for feature toggling",
+  "private": true,
+  "author": "Artjoms Mihailovs",
+  "email": "art.mihailovs@gmail.com",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +13,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  "engines": {
+    "node": "14.17.1",
+    "npm": "6.14.13"
+  },
   "dependencies": {
     "@angular/animations": "~12.0.5",
     "@angular/cdk": "^12.1.0",

@@ -30,18 +30,25 @@ export default class FeatureService {
     private prepareCustomerFeatures(customerFeatureToggles: FeatureToggleModel[], selectedFeatureToggles: string[]): CustomerFeature[] {
         const customerFeaturesMap = customerFeatureToggles.map(f => f.technicalName)
         const customerNotInFeaturesList = selectedFeatureToggles.filter(selectedFeature => !customerFeaturesMap.includes(selectedFeature))
+
         const customerPrepredFeatureToggles = customerFeatureToggles
             .filter(({ technicalName }) => selectedFeatureToggles.includes(technicalName))
             .map(featureToggle => {
+                const isExpired = this.isFeatureExpired(featureToggle)
                 const customerFeature: CustomerFeature = {
                     name: featureToggle.technicalName,
-                    active: featureToggle.inverted ? false : true,
+                    active: true,
                     inverted: featureToggle.inverted,
-                    expired: true
+                    expired: isExpired
+                }
+
+                if (customerFeature.inverted || customerFeature.expired) {
+                    customerFeature.active = false
                 }
 
                 return customerFeature
             })
+
         if (customerNotInFeaturesList.length > 0) {
             customerNotInFeaturesList.forEach(notInListFeatureName =>
                 customerPrepredFeatureToggles.push({
@@ -52,6 +59,17 @@ export default class FeatureService {
                 })
             )
         }
+
         return customerPrepredFeatureToggles
+    }
+
+    private isFeatureExpired(featureToggle: FeatureToggleModel): boolean {
+        const currentDate = new Date()
+        const featureDate = new Date(featureToggle.expiresOn)
+
+        if (currentDate.getTime() > featureDate.getTime()) {
+            return true
+        }
+        return false
     }
 }
