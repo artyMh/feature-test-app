@@ -1,3 +1,7 @@
-.nav-menu {
-    margin: 0 auto;
+::ng-deep {
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link-active {
+        background: #ffffff;
+        border-color: #2196F3;
+        color: #2196F3;
+    }
 }

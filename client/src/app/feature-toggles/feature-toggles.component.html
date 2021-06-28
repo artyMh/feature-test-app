@@ -2,7 +2,7 @@
     <div class="p-col p-text-center">
         <p-button label="Add new feature toggle"
                   icon="pi pi-plus"
-                  [styleClass]="'p-button-secondary'"
+                  [styleClass]="'p-button-primary p-button-outlined p-button-text'"
                   [disabled]="customers.length < 1"
                   (onClick)="showAddDialog()"></p-button>
     </div>
@@ -16,6 +16,7 @@
 <p-dialog header="Add new feature toggle"
           [(visible)]="displayAddDialog"
           [contentStyle]="{'overflow': 'visible'}"
+          [style]="{width: '20vw'}"
           [modal]="true"
           [draggable]="false"
           [resizable]="false"

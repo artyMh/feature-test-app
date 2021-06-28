@@ -1,5 +1,5 @@
 
-<div class="p-formgroup p-mt-1">
+<div class="p-formgroup p-mt-1 p-text-left">
     <form [formGroup]="featureToggleForm" (ngSubmit)="onSubmit()" class="form p-formgrid">
         <div class="p-field p-fluid">
             <label for="displayName" class="p-mb-2">Display name</label>
@@ -32,6 +32,7 @@
             <span class="p-input-icon-left">
                 <i class="pi pi-info-circle"></i>
                 <p-multiSelect [options]="availableCustomersIds"
+                               [showHeader]="false"
                                formControlName="customerIds"
                                optionLabel="customerName"
                                optionValue="code"></p-multiSelect>

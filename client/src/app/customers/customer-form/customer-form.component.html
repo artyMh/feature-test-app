@@ -1,17 +1,19 @@
 
-<div class="p-formgroup-inline p-mt-1">
-    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="form">
-        <div class="p-field p-d-flex p-flex-column">
+<div class="p-formgroup p-mt-1 p-text-left">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="form p-formgrid">
+        <div class="p-field p-fluid">
+            <label for="firstName" class="p-mb-2">First name</label>
             <span class="p-input-icon-left">
                 <i class="pi pi-user"></i>
-                <input type="text" pInputText placeholder="Firstname" formControlName="firstName">
+                <input type="text" pInputText formControlName="firstName">
             </span>
             <small *ngIf="!customerForm.controls['firstName'].valid && customerForm.controls['firstName'].dirty" id="username-help" class="p-error">First name is required.</small>
         </div>
-        <div class="p-field p-d-flex p-flex-column">
+        <div class="p-field p-fluid">
+            <label for="lastName" class="p-mb-2">Last name</label>
             <span class="p-input-icon-left">
                 <i class="pi pi-user"></i>
-                <input type="text" pInputText placeholder="Lastname" formControlName="lastName">
+                <input type="text" pInputText formControlName="lastName">
             </span>
             <small *ngIf="!customerForm.controls['lastName'].valid && customerForm.controls['lastName'].dirty" id="lastname-help" class="p-error">Lastname is required.</small>
         </div>

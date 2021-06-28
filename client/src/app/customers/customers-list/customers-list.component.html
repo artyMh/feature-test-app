@@ -1,14 +1,27 @@
 <div class="p-grid p-flex-column p-jc-center">
     <div class="p-col p-text-center">
-        <h1>Customers list:</h1>
+        <div class="p-grid p-jc-center">
+            <div class="p-col-4 p-text-center">
+                <p-card>
+                    <h3>Customers list:</h3>
+                </p-card>
+            </div>
+        </div>
     </div>
     <div class="p-col">
         <div class="p-grid p-jc-center">
-            <div class="p-col-2" *ngIf="customers && customers.length > 0">
-                <div *ngFor="let customer of customers" class="p-mt-2">
-                    <customer-card [customer]="customer" (customerActionProceed)="customerActionProceed.emit()"></customer-card>
+            <div class="p-col-4" *ngIf="customers && customers.length > 0; else emptyCustomers">
+                <div class="p-grid">
+                    <div *ngFor="let customer of customers" class="p-col-6 p-mt-2">
+                        <customer-card [customer]="customer" (customerActionProceed)="customerActionProceed.emit()"></customer-card>
+                    </div>
                 </div>
             </div>
+            <ng-template #emptyCustomers>
+                <div class="p-col-2">
+                    <p-message severity="info" text="There is no customers"></p-message>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

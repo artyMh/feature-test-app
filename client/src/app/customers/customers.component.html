@@ -1,7 +1,9 @@
 <div class="p-grid p-flex-column">
     <div class="p-col p-text-center">
-        <p-button label="Add new customer" icon="pi pi-plus" [styleClass]="'p-button-secondary'"
-            (onClick)="showAddDialog()"></p-button>
+        <p-button label="Add new customer" 
+                  icon="pi pi-plus"
+                  [styleClass]="'p-button-primary p-button-outlined p-button-text'"
+                  (onClick)="showAddDialog()"></p-button>
     </div>
     <div class="p-col p-text-center">
         <customers-list [customers]="customers" (customerActionProceed)="refreshCustomers()"></customers-list>
@@ -9,6 +11,7 @@
 </div>
 <p-dialog header="Add new customer"
           [(visible)]="displayAddDialog"
+          [style]="{width: '15vw'}"
           [modal]="true"
           [draggable]="false"
           [resizable]="false"

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core'
-// import { CommonModule } from '@angular/common'
-import { ButtonModule } from 'primeng/button'
-// import { InputTextModule } from 'primeng/inputtext'
-// import { CardModule } from 'primeng/card'
-import { CustomersService } from 'src/app/core/services/customers.service'
+import { CardModule } from 'primeng/card'
+
 import { HomeRoutingModule } from './home-routing.module'
 import { HomeComponent } from './home.component'
 
@@ -12,10 +9,9 @@ import { HomeComponent } from './home.component'
         HomeComponent
     ],
     imports: [
-        ButtonModule,
+        CardModule,
         HomeRoutingModule
-    ],
-    providers: [CustomersService]
+    ]
 })
 export class HomeModule {
 }

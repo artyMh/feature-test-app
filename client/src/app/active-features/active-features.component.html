@@ -1,5 +1,5 @@
 <div class="p-grid p-jc-center">
-    <div class="p-col-3 p-text-center">
+    <div class="p-col-4 p-text-center">
         <p-card>
             Select customer
             <br>
@@ -10,15 +10,19 @@
                         optionValue="code"></p-dropdown>
         </p-card>
     </div>
-    <div class="p-col-3 p-text-center">
+</div>
+<div class="p-grid p-jc-center">
+    <div class="p-col-4 p-text-center">
         <p-card>
             Select features
             <br>
             <p-multiSelect [options]="availableFeatureToggles"
                            [styleClass]="'p-mt-3'"
+                           [style]="{'width':'80%'}"
                            [(ngModel)]="selectedFeatures"
                            optionLabel="name"
-                           optionValue="code"></p-multiSelect>
+                           optionValue="code"
+                           [showHeader]="false"></p-multiSelect>
         </p-card>
     </div>
 </div>
@@ -35,8 +39,7 @@
             Result:
             <br>
             <br>
-            {{ customerFeatureResult | json }}
+            <pre class="p-text-left">{{ customerFeatureResult | json }}</pre>
         </p-card>
     </div>
 </div>
-

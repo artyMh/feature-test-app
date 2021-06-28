@@ -18,6 +18,7 @@
 </p-card>
 <p-dialog header="Edit feature toggle"
           [contentStyle]="{'overflow': 'visible'}"
+          [style]="{width: '20vw'}"
           [(visible)]="displayEditDialog"
           [modal]="true"
           [draggable]="false"
@@ -25,7 +26,6 @@
           [closeOnEscape]="true"
           [closable]="true">
     <feature-toggle-form *ngIf="displayEditDialog"
-                         [ngClass]="'p-text-left'"
                          [customers]="customers"
                          [featureToggle]="featureToggle"
                          (submitFeatureToggle)="onEditFeatureToggle($event)"></feature-toggle-form>
