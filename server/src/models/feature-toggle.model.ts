@@ -17,12 +17,10 @@ const schema = new Schema<FeatureToggleModel>({
     expiresOn: Date,
     description: String,
     inverted: { type: Boolean, required: true },
-    customerIds: [
-        {
-            type: String,
-            required: true
-        }
-    ]
+    customerIds: {
+        type: [String],
+        validate: v => Array.isArray(v) && v.length > 0
+    }
 })
 
 const featureToggle = model<FeatureToggleModel>('FeatureToggle', schema)

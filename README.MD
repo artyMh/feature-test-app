@@ -1,7 +1,11 @@
 # Technical test
  
 ### How to launch
-* Server `cd server && npm i && npm run dev` and run mongodb container defined in docker compose
+#### Easy way
+* `docker-compose up` and visit then localhost
+
+#### Hard way
+* Server `cd server && npm i && npm run dev` and run mongodb with default settings
 * Client `cd client && npm i && npm run start`
 
 ### About
