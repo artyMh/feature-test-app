@@ -64,6 +64,10 @@ export default class FeatureService {
     }
 
     private isFeatureExpired(featureToggle: FeatureToggleModel): boolean {
+        if (!featureToggle?.expiresOn) {
+            return false
+        }
+
         const currentDate = new Date()
         const featureDate = new Date(featureToggle.expiresOn)
 
