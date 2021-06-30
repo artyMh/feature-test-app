@@ -6,14 +6,12 @@ import FeatureToggleRoute from '@components/feature-toggle/feature-toggle.route'
 import CustomerRoute from '@components/customer/customer.route'
 import FeatureRoute from '@components/feature/feature.route'
 
-// TODO: add logger, incoming data validations
-
 export default class App {
     private readonly port = process.env.PORT || 3000
     private readonly env = process.env.NODE_ENV || 'development'
-    private readonly dbHost = process.env.DB_HOST || 'localhost'
-    private readonly dbPort = process.env.DB_PORT || '27017'
-    private readonly dbName = process.env.DB_NAME || 'mongoose'
+    private readonly dbHost = process.env.MONGO_HOST || 'localhost'
+    private readonly dbPort = process.env.MONGO_PORT || '27017'
+    private readonly dbName = process.env.MONGO_DATABASE || 'mongoose'
     private readonly mongoDbConfig = {
         url: `mongodb://${this.dbHost}:${this.dbPort}/${this.dbName}`,
         options: {
@@ -39,16 +37,25 @@ export default class App {
         this.app.listen(this.port, () => console.log(`App listening port ${this.port}`))
     }
 
-    private connectToDatabase() {
+    private async connectToDatabase() {
         if (this.env !== 'production') {
             mongooseSet('debug', true)
         }
 
-        connect(this.mongoDbConfig.url, this.mongoDbConfig.options)
+        try {
+            await connect(this.mongoDbConfig.url, this.mongoDbConfig.options)
+        } catch (e) {
+            // eslint-disable-next-line no-console
+            console.error('Error while connectong to MongoDB:', e)
+        }
     }
 
     private initializeMiddlewares() {
-        this.app.use(cors({ origin: 'http://localhost:4200' }))
+        if (this.env === 'production') {
+            this.app.use(cors({ origin: 'http://localhost' }))
+        } else {
+            this.app.use(cors({ origin: 'http://localhost:4200' }))
+        }
         this.app.use(express.json())
     }
 
